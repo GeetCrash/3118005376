@@ -1,6 +1,7 @@
 package check;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -33,15 +34,12 @@ public class Check {
             String[] results2 = new String[result2.size()];
             result2.toArray(results2);
         float finialResult = (detect(results,results2));
-        String ss = String.valueOf(finialResult);
+        DecimalFormat df = new DecimalFormat("#0.00");
+        String finialResult1 = df.format(finialResult);
         Date stop = new Date();//结束时间
-        float time =stop.getTime() - start.getTime();
-        String s3 = String.valueOf(time);
-        String string = new String();
-        string = ss.concat(s3);
         try {
             FileOutputStream out = new FileOutputStream(file);
-            byte buy [] = string.getBytes();
+            byte buy [] = finialResult1.getBytes();
             out.write(buy);
             out.close();
         }catch (Exception e)
