@@ -32,12 +32,13 @@ public class Check {
             }
             String[] results2 = new String[result2.size()];
             result2.toArray(results2);
-        String finialResult = (transferFloatToPersentString(detect(results,results2)));
+        float finialResult = (detect(results,results2));
+        String ss = String.valueOf(finialResult);
         Date stop = new Date();//结束时间
         float time =stop.getTime() - start.getTime();
         String s3 = String.valueOf(time);
         String string = new String();
-        string = finialResult.concat(s3);
+        string = ss.concat(s3);
         try {
             FileOutputStream out = new FileOutputStream(file);
             byte buy [] = string.getBytes();
@@ -105,15 +106,6 @@ public class Check {
                     count++;
         result=count;
         result/=((s1.length()+s2.length())/2);
-        return result;
-    }
-    //将得到的小鼠转换为百分数
-    public static String transferFloatToPersentString(float f)
-    {
-        String result;
-        f*=10000;
-        int t1=(int)f;
-        result=(((float)t1)/100)+"%";
         return result;
     }
 }
